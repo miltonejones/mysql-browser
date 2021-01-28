@@ -1,0 +1,21 @@
+<div class="query-pane">
+  <div class="query-text">
+    <textarea name="message" [(ngModel)]="dbResponse.text"></textarea>
+  </div>
+  <div class="query-page">
+    <mat-paginator [pageIndex]="pageIndex" [length]="dbResponse.response?.count"  (page)="page($event)" [pageSize]="30" [pageSizeOptions]="[30, 60,90]">
+    </mat-paginator>
+  </div>
+  <div class="query-body">
+    <table mat-table *ngIf="dbResponse.response?.result?.length" [dataSource]="dataSource" class="mat-elevation-z2">
+
+      <ng-container [matColumnDef]="def" *ngFor="let def of dbResponse.columns">
+        <th mat-header-cell class="data-cell" *matHeaderCellDef> {{def}} </th>
+        <td mat-cell [title]="element[def]" class="data-cell" *matCellDef="let element"> {{element[def]}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="dbResponse.columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: dbResponse.columns;"></tr>
+    </table>
+  </div>
+</div>

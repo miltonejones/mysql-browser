@@ -1,0 +1,38 @@
+
+.data-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+  padding: 0 10px 0px 0;
+}
+
+
+.query-pane {
+  // outline: dotted 2px red;
+  width: calc(100vw - var(--query-pane-offset-x));
+  height: calc(100vh - var(--query-pane-offset-y));
+  display: grid;
+  overflow: hidden;
+  grid-template-rows: 80px 64px 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas: "text" "page" "body";
+  .query-text  {
+    grid-area: text;
+    // outline: dotted 2px lightsalmon;
+    textarea {
+      // outline: dotted 1px green;
+      width: 99%;
+      height: 100%;
+    }
+  }
+  .query-page  {
+    grid-area: page;
+  }
+  .query-body  {
+    grid-area: body;
+    // outline: dotted 2px lime;
+    height: 100%;
+    overflow-y: auto;
+  }
+}

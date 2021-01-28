@@ -1,0 +1,35 @@
+.connection-body {
+  margin: 20px;
+  overflow: hidden;
+  .data-cell {
+    min-width: 80px;
+    border-bottom: none;
+    &.active {
+      color: #bbb;
+    }
+    &.dirty {
+      font-style: italic;
+      color: #444;
+    }
+  }
+  .edit-cell,
+  .editor-cell {
+    overflow: hidden; 
+  }
+  .example-detail-row {
+    height: 0;
+  }
+ 
+}
+
+.view-sql-text {
+  min-width: 20vw;
+  max-width: var(--card-max-width);
+  margin: 20px; 
+  padding: 0;
+  overflow: hidden;
+  transition: height 1.4s;
+  &.expanded { 
+    padding: 16px;
+  }
+}

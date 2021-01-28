@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.material-icons {
+  vertical-align: middle;
+}
+
+.mat-drawer-container {
+  .mat-drawer {
+    // outline: solid 1px green;
+    max-width: 320px;
+  }
+}
+
+.link-text {
+  color: #37a;
+  cursor: default;
+  :hover {
+    text-decoration: underline;
+  }
+}

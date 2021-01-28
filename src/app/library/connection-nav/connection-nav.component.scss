@@ -1,0 +1,26 @@
+ul {
+  min-width: 200px;
+  list-style: none;
+  padding: 0 0 0 20px;
+  li {
+    div {
+      cursor: pointer;
+      &:hover {
+        color: #37a;
+        text-decoration: underline;
+      }
+      &.active {
+        font-weight: 600;
+        color: #37a;
+      }
+    }
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    em {
+      color: gray;
+      font-size: 0.8rem;
+      font-style: normal;
+    }
+  }
+}

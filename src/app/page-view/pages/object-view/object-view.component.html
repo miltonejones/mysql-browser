@@ -1,0 +1,48 @@
+
+<mat-card class="view-sql-text {{state}}" [@textExpand]="state" *ngIf="selectedObject?.SQL">
+  <mat-card-header>
+    <mat-card-title>{{selectedObject?.Name}}</mat-card-title>
+    <mat-card-subtitle>{{selectedObject?.Type}} TEXT</mat-card-subtitle>
+  </mat-card-header>
+   <mat-card-content>
+    <pre>{{selectedObject?.Text}}</pre>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button class="mat-warn">
+      <mat-icon>delete</mat-icon>
+      DROP</button>
+    <button mat-button>EDIT</button>
+  </mat-card-actions>
+
+</mat-card>
+ 
+<div class="connection-body" [@textExpand]="state === 'expanded' ? 'collapsed' : 'expanded'">
+  <table mat-table *ngIf="Columns" [dataSource]="Columns" multiTemplateDataRows class="mat-elevation-z2">
+
+    <ng-container [matColumnDef]="def" *ngFor="let def of columnDef">
+      <th mat-header-cell class="data-cell" *matHeaderCellDef> {{def}} </th>
+      <td mat-cell class="data-cell" [class.dirty]="element.Dirty" [class.active]="element == expandedElement"
+        *matCellDef="let element">
+        <div [hidden]="def === 'Key' || !element[def]">{{element[def]}}</div>
+        <mat-icon *ngIf="def === 'Key'">{{gridIcon[element[def]]}}</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container [matColumnDef]="def.name" *ngFor="let def of editDef">
+      <td mat-cell class="edit-cell" *matCellDef="let element">
+        <div [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'" class="editor-cell">
+          <span appComponentContainer (valueChange)="valueChange(element)" [item]="def" [data]="element"></span>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnDef"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnDef;"
+      (click)="openColumn(row)"></tr>
+    <tr mat-row *matRowDef="let row; columns: editConf" class="example-detail-row"></tr>
+  </table>
+</div>
+
+
+<!-- -->

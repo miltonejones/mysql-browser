@@ -1,0 +1,15 @@
+<div class="connection-body">
+  <table mat-table *ngIf="service.connection?.Objects" 
+  [dataSource]="Objects"
+    class="mat-elevation-z2">
+    
+    <ng-container [matColumnDef]="def.text" *ngFor="let def of columnConfig">
+      <th mat-header-cell class="data-cell head" *matHeaderCellDef> {{def.text}} </th>
+      <td mat-cell class="data-cell {{def.style}}" (click)="exec(def, element)" *matCellDef="let element"
+      > {{element[def.text]}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnDef"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnDef;"></tr>
+  </table>
+</div>

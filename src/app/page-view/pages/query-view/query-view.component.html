@@ -1,0 +1,5 @@
+<mat-tab-group class="query-view-container" [selectedIndex]="selectedIndex" mat-align-tabs="start">
+  <mat-tab [label]="c.label" *ngFor="let c of service.connection?.Queries">
+    <app-query-pane [dbResponse]="c"></app-query-pane>
+  </mat-tab>
+</mat-tab-group>

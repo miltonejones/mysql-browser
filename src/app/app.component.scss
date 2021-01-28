@@ -1,0 +1,43 @@
+.example-container {
+  width: 100vw;
+  height: calc(100vh - 64px);
+  margin: 0;
+  // z-index: -1;
+  border: 1px solid #555;
+  // outline: solid 3px rebeccapurple;
+
+  --query-pane-offset-x:  8px;
+  --query-pane-offset-y:  120px;
+  --card-max-width: 95vw;
+  &.open {
+    --query-pane-offset-x:  270px;
+    --card-max-width: 75vw;
+  }
+}
+
+.example-toolbar {
+  z-index: 1000;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+  .address-bar {
+    margin: 0 10px;
+    outline: solid 1px #bbb;
+    background-color: #fff;
+    font-size: .9rem;
+    font-weight: 300;
+    padding: 4px;
+  }
+}
+
+.data-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+}
+
+.router-outlet-container {
+  margin: 0px;
+}

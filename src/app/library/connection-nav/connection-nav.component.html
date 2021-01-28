@@ -1,0 +1,92 @@
+<ul>
+  <li class="collection-label">
+    <mat-icon>folder_open</mat-icon>
+    Connections
+    <ul>
+      <li *ngFor="let c of service.connections">
+
+        <div (click)="openConnection(c)" class="connection-host-name">
+          <mat-icon>web</mat-icon>
+          {{c.HOSTNAME}}
+        </div>
+
+        <ul *ngIf="c.Objects?.length">
+
+          <ng-container *ngFor="let collate of c.Collated">
+            <div [hidden]="!collate.children?.length">
+              <mat-icon>expand_more</mat-icon>{{collate.label}}</div>
+            <ul>
+              <li [title]="o.Path" *ngFor="let o of collate.children">
+  
+                <div [class.active]="currentURL.includes(o.Path)" class="connection-object-name" (click)="openObject(c, o)">
+                  <mat-icon>web_asset</mat-icon>
+                  {{o.Name}}
+                </div>
+    
+                <ul *ngIf="o.Columns?.length">
+                  <li [title]="m.Path" *ngFor="let m of o.Columns">
+                    <div [class.active]="currentURL.includes(m.Path)" class="connection-object-name" (click)="openColumn(o, m)">
+                      <mat-icon>text_snippet</mat-icon>
+                      {{m.Name}} <em>{{m.Type}} <span [hidden]="!m.Length">({{m.Length}})</span></em>
+                    </div>
+                  </li>
+                </ul>
+    
+              </li>
+            </ul>  
+          </ng-container>
+
+          <!-- <div>Tables</div>
+          <ul>
+            <li *ngFor="let o of c.Objects" [hidden]="!o.isTable">
+
+              <div class="connection-object-name" (click)="openObject(o)">
+                <mat-icon>web_asset</mat-icon>
+                {{o.Name}}
+              </div>
+  
+              <ul *ngIf="o.Columns?.length">
+                <li *ngFor="let m of o.Columns">
+                  <div class="connection-object-name" (click)="openColumn(o, m)">
+                    <mat-icon>text_snippet</mat-icon>
+                    {{m.Name}} ({{m.Type}})
+                  </div>
+                </li>
+              </ul>
+  
+            </li>
+          </ul>
+
+
+          <div>Views</div>
+          <ul>
+            <li *ngFor="let o of c.Objects" [hidden]="!o.isView">
+
+              <div class="connection-object-name" (click)="openObject(o)">
+                <mat-icon>web_asset</mat-icon>
+                {{o.Name}}
+              </div>
+  
+              <ul *ngIf="o.Columns?.length">
+                <li *ngFor="let m of o.Columns">
+                  <div class="connection-object-name" (click)="openColumn(o, m)">
+                    <mat-icon>text_snippet</mat-icon>
+                    {{m.Name}} ({{m.Type}})
+                  </div>
+                </li>
+              </ul>
+  
+            </li>
+          </ul> -->
+
+
+        </ul>
+
+
+
+      </li>
+    </ul>
+  </li>
+
+
+</ul>
